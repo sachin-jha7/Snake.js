@@ -33,7 +33,7 @@ An interactive **Snake Game** built using **HTML, CSS and JavaScript,** fully pl
 
 > Sachin Jha
 > Passionate web developer building fun browser-based games and projects.
-
+[ https://github.com/sachin-jha7 ]
 
 
  
