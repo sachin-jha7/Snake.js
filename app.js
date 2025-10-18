@@ -29,7 +29,7 @@ let gamePlay = () => {
         speedY = 1;
         snake.setAttribute("id", "bottom-radius");
         moveSnake();
-    }, 250);
+    }, 100);
 }
 
 let playBtn = document.querySelector(".start-btn");
@@ -57,7 +57,7 @@ document.addEventListener("keydown", (event) => {
 
 let gameOver = () => {
     if (snakeY > 25 || snakeX > 25 || snakeX < 1 || snakeY < 1) {
-        console.log("game over");
+        // console.log("game over");
         clearInterval(IntervalId);
         document.querySelector(".game-over").style.display = "block";
         if ("vibrate" in navigator) {
@@ -66,6 +66,18 @@ let gameOver = () => {
             console.log("no vibration supported");
         }
 
+    }
+    for (let i = 0; i < snakeArr.length; i++) {
+        if (prevSnakeCoordinate[i][0] == currheadY && prevSnakeCoordinate[i][1] == currheadX) {
+            // console.log("game over");
+            clearInterval(IntervalId);
+            document.querySelector(".game-over").style.display = "block";
+            if ("vibrate" in navigator) {
+                navigator.vibrate(300);
+            } else {
+                console.log("no vibration supported");
+            }
+        }
     }
 }
 
@@ -88,20 +100,21 @@ restartBtn.addEventListener("click", () => {
         snakeArr[i].style.display = "none";
     }
     snakeArr = [];
+    let retrivedScore = localStorage.getItem("StoreHighScore");
     document.querySelector(".score").innerText = `Score: 0`;
-    document.querySelector(".Hscore").innerText = `High Score: ${HighScore}`;
+    document.querySelector(".Hscore").innerText = `High Score: ${retrivedScore}`;
     changeFoodPlace();
 });
 
 
-let newSnakeX = 0, newSnakeY = 0; let IntervalId;
+let newSnakeX = 0, newSnakeY = 0; let IntervalId; let currheadX = 0, currheadY = 0;
 
 let moveSnake = () => {
     IntervalId = setInterval(() => {
         snakeX += speedX;
         snakeY += speedY;
-        overX = snakeX;
-        overY = snakeY;
+        currheadX = snakeX;
+        currheadY = snakeY;
         gameOver();
         snake.style.gridArea = `${snakeY} / ${snakeX}`;
         newSnakeX = snakeX, newSnakeY = snakeY;
@@ -161,6 +174,8 @@ let changeDir = (nav) => {
     gameOver();
 }
 
+document.querySelector(".Hscore").innerText = `High Score: ${localStorage.getItem("StoreHighScore")}`;
+
 // had food eaten
 let CurrScore = 0; let HighScore = 0;
 let foodEat = () => {
@@ -173,6 +188,9 @@ let foodEat = () => {
 
         if (CurrScore > HighScore) {
             HighScore = CurrScore;
+            if (localStorage.getItem("StoreHighScore") < HighScore) {
+                localStorage.setItem("StoreHighScore", HighScore);
+            }
         }
         document.querySelector(".score").innerText = `Score: ${CurrScore}`;
         changeFoodPlace();
