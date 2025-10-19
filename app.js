@@ -258,10 +258,11 @@ let changeDir = (nav) => {
     gameOver();
 }
 
-if(!localStorage.getItem("StoreHightScore")) {
+if(!localStorage.getItem("StoreHighScore")) {
     document.querySelector(".Hscore").innerText = `High Score: 0`;
-} 
-document.querySelector(".Hscore").innerText = `High Score: ${localStorage.getItem("StoreHighScore")}`;
+} else {
+    document.querySelector(".Hscore").innerText = `High Score: ${localStorage.getItem("StoreHighScore")}`;
+}
 
 // had food eaten
 let CurrScore = 0; let HighScore = 0;
