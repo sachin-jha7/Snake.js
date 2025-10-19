@@ -39,7 +39,7 @@ body {
     font-size: 23px;
     font-family: monospace;
 }
-.nav button {
+.nav .open {
     height: 30px;
     width: 150px;
     background-color: transparent;
@@ -48,6 +48,61 @@ body {
     border-radius: 10px;
     font-size: 17px;
     /* margin-left: 50vw; */
+}
+.nav-bar {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    background-color: #222;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 2px 2px 5px gray;
+    top: -120px;
+    transition: all 0.5s linear 0s;
+}
+.nav-bar .secondary {
+    height: 35px;
+    width: 160px;
+    font-size: 17px;
+    margin-left: 20px;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.nav-bar .red {
+    border: 1px solid red;
+}
+
+.red:hover {
+    background-color: red;
+}
+
+.nav-bar .blue {
+    border: 1px solid royalblue;
+}
+
+.blue:hover {
+    background-color: royalblue;
+}
+
+.nav-bar .green {
+    border: 1px solid limegreen;
+}
+
+.green:hover {
+    background-color: limegreen;
+}
+.nav-bar .orange {
+    border: 1px solid orange;
+}
+
+.orange:hover {
+    background-color: orange;
 }
 
 .one {
@@ -64,7 +119,17 @@ body {
     width: 100%;
     overflow: scroll;
 }
-
+.menu-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.cross-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
 .game-container {
     height: 90%;
     width: 35%;
@@ -171,7 +236,7 @@ body {
     color: white;
     border-radius: 15px;
     cursor: pointer;
-    box-shadow: 0px 0px 5px royalblue;
+    box-shadow: 0px 0px 4px royalblue;
 }
 
 .keys {
@@ -200,15 +265,42 @@ body {
     align-items: center;
 }
 
+
 .start-btn {
     height: 40px;
     width: 65px;
     background-color: orangered;
     border: 1px solid orangered;
+    box-shadow: 0px 0px 4px orangered;
     color: white;
     border-radius: 10px;
     font-size: 17px;
     font-weight: 500;
+}
+
+.pause-btn {
+    height: 40px;
+    width: 80px;
+    font-size: 17px;
+    font-weight: 500;
+    background-color: dodgerblue;
+    color: white;
+    border: 1px solid dodgerblue;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px dodgerblue;
+    display: none;
+}
+.resume-btn {
+    height: 40px;
+    width: 95px;
+    font-size: 17px;
+    font-weight: 500;
+    border: 1px solid rgb(131, 7, 247);
+    background-color: rgb(130, 4, 247);
+    box-shadow: 0px 0px 4px rgb(131, 7, 247);
+    color: white;
+    border-radius: 10px;
+    display: none;
 }
 
 .bottom {
@@ -240,8 +332,28 @@ body {
     .restart {
         cursor: default;
     }
-    .nav button {
+    .nav .open {
         display: none;
+    }
+    .nav-bar {
+        height: 110px;
+        flex-wrap: wrap;
+    }
+    .nav-bar .secondary {
+        margin: 0;
+        cursor: default;
+    }
+    .nav-bar .blue {
+        margin-right: 10px;
+    }
+    .nav-bar .green {
+        margin-right: 10px;
+    }
+    .menu-btn {
+        margin-left: 100px;
+    }
+    .cross-btn {
+        margin-left: 100px;
     }
 }
 
@@ -260,8 +372,17 @@ body {
     .restart {
         cursor: default;
     }
-    .nav button {
+    .nav .open {
         display: none;
+    }
+    .nav-bar .secondary {
+        cursor: default;
+    }
+    .menu-btn {
+        margin-left: 200px;
+    }
+    .cross-btn {
+        margin-left: 200px;
     }
 }
 
