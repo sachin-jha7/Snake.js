@@ -14,11 +14,32 @@
             <div class="logo"></div>
             <p class="heading"><span class="one">Snake</span>.<span class="two">js</span></p>
         </div>
+        <div class="nav-bar-menuBtn">
+            <button class="menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px"
+                    fill="red">
+                    <path
+                        d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z" />
+                </svg>
+            </button>
+            <button class="cross-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="red">
+                    <path
+                        d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" />
+                </svg>
+            </button>
+        </div>
         <div>
-            <button>Press: S To Start</button>
+            <button class="open">Press: S To Start</button>
         </div>
     </div>
     <div class="main">
+        <div class="nav-bar">
+            <button class="secondary blue">Default Speed</button>
+            <button class="secondary red">High Speed</button>
+            <button class="secondary green">Medium Speed</button>
+            <button class="secondary orange">Slow</button>
+        </div>
         <div class="game-container">
             <div class="score-bar">
                 <p class="score">Score: 0</p>
@@ -52,6 +73,8 @@
                             d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z" />
                     </svg></button>
                 <button class="start-btn">Play</button>
+                <button class="pause-btn">Pause</button>
+                <button class="resume-btn">Resume</button>
                 <button class="btn right" id="right"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
                         viewBox="0 -960 960 960" width="24px" fill="white">
                         <path
