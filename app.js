@@ -216,7 +216,7 @@ let moveSnake = () => {
             snakeArr[i].style.gridArea = `${prevSnakeCoordinate[i][0]} / ${prevSnakeCoordinate[i][1]}`;
         }
         foodEat();
-    }, 200);
+    }, speed);
 }
 
 let changeFoodPlace = () => {
