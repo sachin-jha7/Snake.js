@@ -4,6 +4,69 @@ let snake = document.querySelector(".snake");
 
 let foodX = 0, foodY = 0; let speedX = 0, speedY = 0; let snakeX = 12, snakeY = 2;
 let prevFoodX = 0, prevFoodY = 0;
+
+let nav_bar = document.querySelector(".nav-bar");
+let menu_btn = document.querySelector(".menu-btn");
+let cross_btn = document.querySelector(".cross-btn");
+
+menu_btn.addEventListener("click", () => {
+    nav_bar.style.top = "60px";
+    setTimeout(() => {
+        nav_bar.style.opacity = "1";
+        cross_btn.style.display = "block";
+        menu_btn.style.display = "none";
+    }, 300);
+});
+
+cross_btn.addEventListener("click", () => {
+    nav_bar.style.top = "-120px";
+    nav_bar.style.opacity = "0";
+    setTimeout(() => {
+        cross_btn.style.display = "none";
+        menu_btn.style.display = "block";
+    }, 300);
+});
+
+// ADDING Levels of speed
+
+let speed = 200;
+let blueBtn = document.querySelector(".blue");
+blueBtn.style.backgroundColor = "royalblue";
+blueBtn.addEventListener("click", () => {
+    speed = 200;
+    blueBtn.style.backgroundColor = "royalblue";
+    redBtn.style.backgroundColor = "transparent";
+    greenBtn.style.backgroundColor = "transparent";
+    orangeBtn.style.backgroundColor = "transparent";
+});
+
+let redBtn = document.querySelector(".red");
+redBtn.addEventListener("click", () => {
+    speed = 100;
+    redBtn.style.backgroundColor = "red";
+    blueBtn.style.backgroundColor = "transparent";
+    greenBtn.style.backgroundColor = "transparent";
+    orangeBtn.style.backgroundColor = "transparent";
+});
+
+let greenBtn = document.querySelector(".green");
+greenBtn.addEventListener("click", () => {
+    speed = 300;
+    greenBtn.style.backgroundColor = "limegreen";
+    redBtn.style.backgroundColor = "transparent";
+    blueBtn.style.backgroundColor = "transparent";
+    orangeBtn.style.backgroundColor = "transparent";
+});
+
+let orangeBtn = document.querySelector(".orange");
+orangeBtn.addEventListener("click", () => {
+    speed = 400;
+    orangeBtn.style.backgroundColor = "orange";
+    greenBtn.style.backgroundColor = "transparent";
+    redBtn.style.backgroundColor = "transparent";
+    blueBtn.style.backgroundColor = "transparent";
+});
+
 // Navigation Button
 
 let allBtn = document.querySelectorAll(".btn");
@@ -20,17 +83,35 @@ for (let btn of allBtn) {
     });
 }
 
+let pause_btn = document.querySelector(".pause-btn");
 let isGameStarted = false;
 let gamePlay = () => {
     isGameStarted = false;
     setTimeout(() => {
         playBtn.style.display = "none";
+        pause_btn.style.display = "block";
         speedX = 0;
         speedY = 1;
         snake.setAttribute("id", "bottom-radius");
         moveSnake();
     }, 100);
 }
+
+let speedX_at_pause = 0, speedY_at_pause = 0;
+let resume_btn = document.querySelector(".resume-btn");
+resume_btn.addEventListener("click", () => {
+    pause_btn.style.display = "block";
+    resume_btn.style.display = "none";
+    snakeX = speedX_at_pause;
+    snakeY = speedY_at_pause;
+    moveSnake();
+});
+
+pause_btn.addEventListener("click", () => {
+    clearInterval(IntervalId);
+    pause_btn.style.display = "none";
+    resume_btn.style.display = "block";
+});
 
 let playBtn = document.querySelector(".start-btn");
 playBtn.addEventListener("click", gamePlay);
@@ -85,6 +166,7 @@ let gameOver = () => {
 let restartBtn = document.querySelector(".restart");
 restartBtn.addEventListener("click", () => {
     playBtn.style.display = "block";
+    pause_btn.style.display = "none";
     speedX = 0;
     speedY = 1;
     snakeX = 12;
@@ -113,6 +195,8 @@ let moveSnake = () => {
     IntervalId = setInterval(() => {
         snakeX += speedX;
         snakeY += speedY;
+        speedX_at_pause = snakeX;
+        speedY_at_pause = snakeY;
         currheadX = snakeX;
         currheadY = snakeY;
         gameOver();
